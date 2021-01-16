@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+</head>
+
+<body>
+    <div class="container">
+        <p *ngIf="show">If we click on <em class="red">Delete data</em> button, the data will be deleted and ng-template will show the message.</p>
+        <p *ngIf="!show">If we click on <em class="green">Restore data</em> button, the data will be restored.</p>
+        <table class="table table-striped">
+            <div *ngIf="!dup.length; then notPresent"></div>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of dup">
+                    <td>{{user.name}}</td>
+                    <td>{{user.username}}</td>
+                    <td Highlighter>{{user.email}}</td>
+                </tr>
+            </tbody>
+            <ng-template #notPresent>No user data present!!!</ng-template>
+        </table>
+        <button *ngIf="show" type="button" class="btn btn-danger" (click)="rem()">Delete data</button>
+        <button *ngIf="!show" type="button" class="btn btn-success" (click)="rem()">Restore data</button>
+    </div>
+</body>
+
+</html>
